@@ -1,0 +1,33 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    align-items: center;
+    background: #181818;
+    width: 100%;
+    height: 120px;
+}
+
+.tituloPrincipal {
+    font-size: 35px;
+    color: aquamarine;
+}
+
+.navMenu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navMenu li a{
+    padding: 0.5rem 1rem;
+    font-size: 17px;
+    color: cadetblue;
+    text-decoration: none;
+}
