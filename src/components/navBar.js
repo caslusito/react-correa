@@ -6,7 +6,7 @@ function App() {
                 <ul className="navMenu">
                     <li><a className="" href="#">HOME</a></li>
                     <li><a className="" href="#">FAQ</a></li>
-                    <li><a className="" href="#">CONTACT</a></li>
+                    <li><a className="" href="#">CONTACT US</a></li>
                 </ul>
             </nav>
         </header>
