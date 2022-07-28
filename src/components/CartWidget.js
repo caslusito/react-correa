@@ -1,6 +1,6 @@
 const CartWidget = () => {
     return (
-        <img src="/favicon.ico" />
+        <img className="carrito" src="/carrito.png" />
     )
 }
 export default CartWidget
