@@ -1,7 +1,10 @@
-function App() {
+import CartWidget from "./CartWidget"
+
+const navBar = () => {
     return (
         <header id="header">
             <h1 className="tituloPrincipal">Kekeri Camisetas</h1>
+            <CartWidget />
             <nav>
                 <ul className="navMenu">
                     <li><a className="" href="#">HOME</a></li>
@@ -11,6 +14,5 @@ function App() {
             </nav>
         </header>
     )
-};
-
-export default App;
+}
+export default navBar

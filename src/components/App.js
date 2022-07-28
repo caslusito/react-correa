@@ -1,11 +1,16 @@
-import Header from "./navBar"
+import ItemListContainer from "./ItemListContainer"
+import Nav from "./navBar"
 
-function App() {
+const App = () => {
     return (
         <>
-            <Header/>
+
+            <Nav />
+
+            <ItemListContainer greeting={"Kekeri Camisetas"} />
+
         </>
     )
 }
 
-export default App;
+export default App
