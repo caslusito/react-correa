@@ -1,6 +1,8 @@
 const CartWidget = () => {
     return (
-        <img className="carrito" src="/carrito.png" />
+        <span class="material-symbols-outlined">
+            shopping_cart
+        </span>
     )
 }
 export default CartWidget
