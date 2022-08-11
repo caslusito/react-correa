@@ -1,5 +1,7 @@
 import Nav from "./navBar"
-import ItemListContainer from "./ItemListContainer"
+// import ItemListContainer from "./ItemListContainer"
+import ItemDetailContainer from "./ItemDetailContainer"
+
 
 const App = () => {
     return (
@@ -7,7 +9,10 @@ const App = () => {
 
             <Nav />
 
-            <ItemListContainer greeting={"Kekeri Camisetas"} />
+            {/* <ItemListContainer greeting={"Kekeri Camisetas"} /> */}
+
+            <ItemDetailContainer/>
+            
         </>
     )
 }

@@ -10,6 +10,9 @@ const navBar = () => {
                     <li><a className="" href="#">HOME</a></li>
                     <li><a className="" href="#">FAQ</a></li>
                     <li><a className="" href="#">CONTACT US</a></li>
+                    <li><span class="material-symbols-outlined">
+                        shopping_cart
+                    </span> </li>
                 </ul>
             </nav>
         </header>

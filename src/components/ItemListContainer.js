@@ -8,24 +8,28 @@ import ItemList from "./ItemList"
 const ItemListContainer = ({ greeting }) => {
 
     const [listProducts, setListProducts] = useState([])
-    // const [loading, setLoading] = useState (false)
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        customFetch (productos)
+        setLoading(true)
+        customFetch(productos)
             .then(data => {
-                // setLoading (true)
+                setLoading(false)
                 setListProducts(data)
             })
     }, [])
-
-    console.log (listProducts)
 
 
     return (
         <>
             <h1 className="titulo">Welcome to {greeting}</h1>
-            <ItemList listProducts={listProducts}/>
-            {/* <ItemCount/> */}
+
+            {!loading
+            ?
+                <ItemList listProducts={listProducts} />
+            :
+            <text>cargando...</text>
+            }
         </>
     )
 }
