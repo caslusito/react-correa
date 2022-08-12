@@ -42,6 +42,17 @@
 
 
 .camisetas {
+    max-width: 270px;
+    display: flex;
+    flex-flow: column ;
     text-align: center;
     margin-top: 5rem;
+    margin-left: 2rem;
+    border-radius: 6px;
+    box-shadow: 0 0 0 0.2em rgba(0, 0, 0, 0.2);
+}
+
+
+.card {
+    
 }
