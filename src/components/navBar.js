@@ -1,18 +1,27 @@
-import CartWidget from "./CartWidget"
+import { Link } from "react-router-dom"
 
 const navBar = () => {
     return (
         <header id="header">
-            <h1 className="tituloPrincipal">Kekeri Camisetas</h1>
-            <CartWidget />
+
+            <Link to="/">
+                <img className="logo" src="../../nizar.png" alt="logo kekeri" />
+            </Link>
+
             <nav>
                 <ul className="navMenu">
-                    <li><a className="" href="#">HOME</a></li>
-                    <li><a className="" href="#">FAQ</a></li>
-                    <li><a className="" href="#">CONTACT US</a></li>
-                    <li><span class="material-symbols-outlined">
-                        shopping_cart
-                    </span> </li>
+                    {/* <li><Link to="faq">FAQ</Link></li>
+                    <li><Link to="contact">CONTACT US</Link></li> */}
+                    <li><Link to="/category/international">INTERNATIONAL</Link></li>
+                    <li><Link to="/category/retro">RETRO</Link></li>
+                    <li><Link to="/category/national">NATIONAL</Link></li>
+                    <li>
+                        <Link to="cart">
+                            <span class="material-symbols-outlined">
+                                shopping_cart
+                            </span>
+                        </Link>
+                    </li>
                 </ul>
             </nav>
         </header>

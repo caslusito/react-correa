@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react"
 import { customFetch } from "../assets/customFetch"
-import { productos } from "../assets/productos"
-// import ItemCount from "./ItemCount"
+import { products } from "../assets/products"
 import ItemList from "./ItemList"
-
+// import ItemCount from "./ItemCount"
 
 const ItemListContainer = ({ greeting }) => {
 
@@ -12,7 +11,7 @@ const ItemListContainer = ({ greeting }) => {
 
     useEffect(() => {
         setLoading(true)
-        customFetch(productos)
+        customFetch(products)
             .then(data => {
                 setLoading(false)
                 setListProducts(data)
@@ -25,10 +24,10 @@ const ItemListContainer = ({ greeting }) => {
             <h1 className="titulo">Welcome to {greeting}</h1>
 
             {!loading
-            ?
+                ?
                 <ItemList listProducts={listProducts} />
-            :
-            <text>cargando...</text>
+                :
+                <p className="texto-cargando">CARGANDO...</p>
             }
         </>
     )
