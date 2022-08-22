@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Button } from '@chakra-ui/react'
 
 const ItemCount = ({ initial, stock, onAdd }) => {
 
@@ -9,11 +10,13 @@ const ItemCount = ({ initial, stock, onAdd }) => {
 
 
     return (
-        <div id="compras">
-            <button className="botones" onClick={increase}>+</button>
-            <p> {count} </p>
-            <button className="botones" onClick={decrease}>-</button>
-            <button className="botones" onClick={onAdd}>agregar al carrito</button>
+        <div className="itemCount">
+                <h3 className="count"> {count} </h3>
+            <div className="itemCountCounter">
+                <Button className="countCart" colorScheme='blue' onClick={increase}>+</Button>
+                <Button className="countCart" colorScheme='blue' onClick={decrease}>-</Button>
+            </div>
+                <Button className="addToCart" colorScheme='orange' onClick={onAdd}>ADD TO CART</Button>
         </div>
     )
 

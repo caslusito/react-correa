@@ -16,8 +16,12 @@
 }
 
 .tituloPrincipal {
-    font-size: 35px;
-    color: aquamarine;
+    font-size: 25px;
+    font-weight: bolder;
+    letter-spacing: 3px;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 1rem;
 }
 
 .navMenu {
@@ -39,6 +43,8 @@
     display: flex;
     justify-content: center;
     margin-top: 5rem;
+    font-size: 35px;
+    font-weight: bold;
 }
 
 
@@ -70,7 +76,64 @@
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
-.texto-cargando {
+.spinner {
     display: flex;
     justify-content: center;
+}
+
+
+.cont{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.31); 
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.31);
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    margin-right: 25%;
+    margin-left: 25%;
+    margin-top: 1%;
+    background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+}
+
+.img-details {
+    width: 400px;
+    margin-left: 17rem;
+}
+
+.itemCount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.itemCountCounter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.count {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.goToCart {
+    margin-bottom: 1rem;
+}
+
+.addToCart {
+    margin-bottom: 1rem;
+}
+
+.countCart {
+    margin: 1rem;
+}
+
+.price {
+    font-weight: bolder;
+    font-size: 25px;
+    margin: 10px auto;
 }

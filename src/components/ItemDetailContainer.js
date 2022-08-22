@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { customFetch } from "../assets/customFetch"
 import { products } from "../assets/products"
 import { useParams } from "react-router-dom"
-import { Spinner } from "@chakra-ui/react"
+import { Spinner, Center } from "@chakra-ui/react"
 import ItemDetail from "./ItemDetail"
 
 
@@ -26,7 +26,9 @@ const ItemDetailContainer = () => {
             {!loading ? (
                 <ItemDetail listProduct={listProduct} />
             ) : (
-                <Spinner />
+                <Center mt="40px">
+                    <Spinner />
+                </Center>
             )}
         </>
     );

@@ -5,7 +5,7 @@ export const products = [
         name: "Juventus 22/23",
         category: "international",
         image: "../../juventus.webp",
-        description: "A tribute to the values that have always distinguished the team.",
+        description: "",
         price: 12.799
     },
     {
