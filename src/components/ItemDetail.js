@@ -1,18 +1,34 @@
-// import ItemCount from "./ItemCount"
+import ItemCount from "./ItemCount"
+import { useState } from "react"
+import { Link } from "react-router-dom"
 
-const itemDetail = ({ listProduct }) => {
-    console.log(listProduct)
+const ItemDetail = ({ listProduct }) => {
+
+    const [added, setAdded] = useState(false)
+    const onAdd = () => {
+        setAdded(true)
+    }
 
     return (
-        <section className="camisetas">
-            <div className="card">
-                <h2>{listProduct.title}</h2>
-                <img src={listProduct.image} alt={listProduct.productos} />
-                <h4>Available stock : {listProduct.stock}</h4>
-                <h3>${listProduct.price}</h3>
-                {/* <ItemCount stock={6} initial={1} onAdd={2}/> */}
+        <>
+            <div>
+                <img src={listProduct.image} alt={listProduct.name} />
+                <h3>{listProduct.name}</h3>
+                <p>{listProduct.details} </p>
+                <p>${listProduct.price}</p>
+                <div>
+                    {
+                        added ?
+                            <Link to='/cart' >
+                                <button>Ir al carrito</button>
+                            </Link>
+                            :
+                            <ItemCount stock={listProduct.stock} initial={1} onAdd={onAdd} />
+                    }
+                </div>
             </div>
-        </section>
+        </>
     )
-}
-export default itemDetail
+};
+
+export default ItemDetail

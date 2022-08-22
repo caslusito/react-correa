@@ -2,19 +2,18 @@ import { useState } from "react"
 
 const ItemCount = ({ initial, stock, onAdd }) => {
 
-    const [contador, setCount] = useState(initial);
+    const [count, setCount] = useState(initial);
 
-    const añadirAlCarrito = () => contador < stock && setCount(contador + 1);
-    const removerDelCarrito = () => contador > initial && setCount(contador - 1);
-    const comprar = () => setCount (0);
+    const increase = () => count < stock && setCount(count + 1);
+    const decrease = () => count > initial && setCount(count - 1);
 
 
     return (
         <div id="compras">
-            <p>El carrito tiene {contador} articulos</p>
-            <button className="botones" onClick={añadirAlCarrito}>añadir al carrito</button>
-            <button className="botones" disabled={stock === 0 && "disabled"} onClick={comprar}>comprar los productos</button>
-            <button className="botones" onClick={removerDelCarrito}>remover del carrito</button>
+            <button className="botones" onClick={increase}>+</button>
+            <p> {count} </p>
+            <button className="botones" onClick={decrease}>-</button>
+            <button className="botones" onClick={onAdd}>agregar al carrito</button>
         </div>
     )
 

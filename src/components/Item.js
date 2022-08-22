@@ -1,17 +1,17 @@
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 
-const item = ({ products }) => {
+const Item = ({ product }) => {
 
     return (
         <>
             <div className="camisetas">
-                <h2>{products.title}</h2>
-                <img src={products.image} alt={products.products} />
-                <h3>${products.price}</h3>
-                <Link className="button" to={`/details/${products.id} `}>see details</Link>
-                <h4>Available stock : {products.stock}</h4>
+                <h2>{product.name}</h2>
+                <img src={product.image} alt={product.product} />
+                <h3>${product.price}</h3>
+                <NavLink className="button" to={`/details/${product.id}`}>see details</NavLink>
+                <h4>Available stock : {product.stock}</h4>
             </div>
         </>
     )
 }
-export default item
+export default Item

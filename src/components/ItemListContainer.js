@@ -1,33 +1,42 @@
 import { useState, useEffect } from "react"
 import { customFetch } from "../assets/customFetch"
 import { products } from "../assets/products"
+import { useParams } from 'react-router-dom'
+import { Spinner } from "@chakra-ui/react"
 import ItemList from "./ItemList"
-// import ItemCount from "./ItemCount"
+
 
 const ItemListContainer = ({ greeting }) => {
 
-    const [listProducts, setListProducts] = useState([])
+    const [listProduct, setListProduct] = useState([])
     const [loading, setLoading] = useState(true)
+
+    const { category } = useParams()
+
 
     useEffect(() => {
         setLoading(true)
         customFetch(products)
-            .then(data => {
-                setLoading(false)
-                setListProducts(data)
+            .then(res => {
+                if (category) {
+                    setLoading(false)
+                    setListProduct(res.filter(prod => prod.category === category))
+                } else {
+                    setLoading(false)
+                    setListProduct(res)
+                }
             })
-    }, [])
+    }, [category])
 
 
     return (
         <>
-            <h1 className="titulo">Welcome to {greeting}</h1>
-
+            <h1 className="titulo">Welcome {greeting}</h1>
             {!loading
                 ?
-                <ItemList listProducts={listProducts} />
+                <ItemList listProduct={listProduct} />
                 :
-                <p className="texto-cargando">CARGANDO...</p>
+                <Spinner />
             }
         </>
     )

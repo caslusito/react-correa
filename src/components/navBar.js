@@ -1,26 +1,23 @@
-import { Link } from "react-router-dom"
+import { NavLink } from 'react-router-dom'
+
 
 const navBar = () => {
     return (
         <header id="header">
-
-            <Link to="/">
-                <img className="logo" src="../../nizar.png" alt="logo kekeri" />
-            </Link>
-
+            <NavLink to="/">
+                <img className="logo" src="../../nizar.png" alt="logo nizar"/>
+            </NavLink>
             <nav>
                 <ul className="navMenu">
-                    {/* <li><Link to="faq">FAQ</Link></li>
-                    <li><Link to="contact">CONTACT US</Link></li> */}
-                    <li><Link to="/category/international">INTERNATIONAL</Link></li>
-                    <li><Link to="/category/retro">RETRO</Link></li>
-                    <li><Link to="/category/national">NATIONAL</Link></li>
+                    <li><NavLink to="/category/international ">INTERNATIONAL</NavLink></li>
+                    <li><NavLink to="/category/retro">RETRO</NavLink></li>
+                    <li><NavLink to="/category/national">NATIONAL</NavLink></li>
                     <li>
-                        <Link to="cart">
+                        <NavLink to="cart">
                             <span class="material-symbols-outlined">
                                 shopping_cart
                             </span>
-                        </Link>
+                        </NavLink>
                     </li>
                 </ul>
             </nav>

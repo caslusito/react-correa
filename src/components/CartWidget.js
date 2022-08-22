@@ -1,8 +1,12 @@
+import { FaShoppingCart } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
+
 const CartWidget = () => {
     return (
-        <div className="carrito">
-            <p>carrito</p>
-        </div>
-    )
-}
+        <NavLink to="/cart">
+            <FaShoppingCart />
+        </NavLink>
+    );
+};
+
 export default CartWidget

@@ -24,6 +24,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 }
 
 .navMenu li a {
@@ -50,6 +51,7 @@
     border-radius: 6px;
     box-shadow: 0 0 0 0.2em rgba(0, 0, 0, 0.2);
     float: left;
+    margin-bottom: 2rem;
 }
 
 
