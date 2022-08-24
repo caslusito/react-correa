@@ -5,7 +5,7 @@ const navBar = () => {
     return (
         <header id="header">
             <NavLink to="/">
-                <img className="logo" src="../../nizar.png" alt="logo nizar"/>
+                <img className="logo" src="/../nizar.png" alt="logo nizar"/>
             </NavLink>
             <nav>
                 <ul className="navMenu">

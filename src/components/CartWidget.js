@@ -1,12 +1,17 @@
+import { CartContext } from '../context/CartContext';
 import { FaShoppingCart } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { useContext } from 'react';
 
-const CartWidget = () => {
+function CartWidget() {
+
+    const { getItemQty } = useContext(CartContext)
+
     return (
-        <NavLink to="/cart">
-            <FaShoppingCart />
-        </NavLink>
-    );
-};
+        <div>
+                <FaShoppingCart itemContent={getItemQty()} />
+        </div >
+    )
+}
 
 export default CartWidget

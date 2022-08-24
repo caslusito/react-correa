@@ -1,22 +1,28 @@
-import { useState } from "react"
 import { Button } from '@chakra-ui/react'
 
-const ItemCount = ({ initial, stock, onAdd }) => {
+const ItemCount = ({ qty, setQty, stock, onAdd }) => {
 
-    const [count, setCount] = useState(initial);
+    const decrease = () => {
+        if (qty > 1) {
+            setQty(qty - 1)
+        }
+    }
 
-    const increase = () => count < stock && setCount(count + 1);
-    const decrease = () => count > initial && setCount(count - 1);
+    const increase = () => {
+        if (qty < stock) {
+            setQty(qty + 1)
+        }
+    }
 
 
     return (
         <div className="itemCount">
-                <h3 className="count"> {count} </h3>
+            <h3 className="count"> {qty} </h3>
             <div className="itemCountCounter">
                 <Button className="countCart" colorScheme='blue' onClick={increase}>+</Button>
                 <Button className="countCart" colorScheme='blue' onClick={decrease}>-</Button>
             </div>
-                <Button className="addToCart" colorScheme='orange' onClick={onAdd}>ADD TO CART</Button>
+            <Button className="addToCart" colorScheme='orange' onClick={onAdd}>ADD TO CART</Button>
         </div>
     )
 
