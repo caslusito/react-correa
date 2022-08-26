@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { createContext, useState } from "react";
 
 export const CartContext = createContext()
 
@@ -6,61 +6,48 @@ const { Provider } = CartContext
 
 const MyProvider = ({ children }) => {
 
-    const [Cart, SetCart] = useState([])
+    const [cart, setCart] = useState([])
 
-    const IsInCart = (id) => {
-
-        return Cart.some(x => x.id === id)
+    const isInCart = (id) => {
+        return cart.some(x => x.id === id)
     }
-    const AddItem = (item, qty) => {
 
-        const NewItem = {
+    const addItem = (item, qty) => {
+
+        const newItem = {
             ...item,
             qty
         }
 
-        if (IsInCart(NewItem.id)) {
-            const findProduct = Cart.find(x => x.id === NewItem.id)
-            const productIndex = Cart.indexOf(findProduct)
-            const auxArray = [...Cart]
+        if (isInCart(newItem.id)) {
+            const findProduct = cart.find(x => x.id === newItem.id)
+            const productIndex = cart.indexOf(findProduct)
+            const auxArray = [...cart]
             auxArray[productIndex].qty += qty
-            SetCart(auxArray)
+            setCart(auxArray)
+        } else {
+            setCart([...cart, newItem])
         }
-
-        else {
-            SetCart([...Cart, NewItem])
-        }
-
-
     }
 
-    const EmptyCart = () => {
-
-        return SetCart([])
-
+    const emptyCart = () => {
+        return setCart([])
     }
 
-    const DeleteItem = (id) => {
-
-        return SetCart(Cart.filter(x => x.id !== id))
-
+    const deleteItem = (id) => {
+        return setCart(cart.filter(x => x.id !== id))
     }
 
-    const GetItemQty = () => {
-
-        return Cart.reduce((acc, x) => acc += x.qty, 0)
-
+    const getItemQty = () => {
+        return cart.reduce((acc, x) => acc += x.qty, 0)
     }
 
-    const GetItemPrice = () => {
-
-        return Cart.reduce((acc, x) => acc += x.qty * x.price, 0)
-
+    const getItemPrice = () => {
+        return cart.reduce((acc, x) => acc += x.qty * x.price, 0)
     }
 
 
-
-    return <Provider value={{ Cart, IsInCart, AddItem, EmptyCart, DeleteItem, GetItemQty, GetItemPrice }}>{children}</Provider>
+    return <Provider value={{ cart, isInCart, addItem, emptyCart, deleteItem, getItemQty, getItemPrice }}>{children}</Provider>
 
 }
 

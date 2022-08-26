@@ -1,6 +1,5 @@
 import { CartContext } from '../context/CartContext';
 import { FaShoppingCart } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
 import { useContext } from 'react';
 
 function CartWidget() {
