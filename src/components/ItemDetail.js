@@ -6,14 +6,11 @@ import { CartContext } from "../context/CartContext";
 
 const ItemDetail = ({ listProduct }) => {
 
-    const [qty, setQty] = useState(false)
-
-    const { isInCart, addItem } = useContext(CartContext)
-
+    const [quantity, setQuantity] = useState(false)
+    const { addItem, isInCart } = useContext(CartContext)
     const onAdd = () => {
-        alert(`Cantidad de productos ${qty}`)
+        addItem(listProduct, quantity)
         isInCart(listProduct.id)
-        addItem(listProduct, qty)
     }
 
     return (
@@ -25,14 +22,14 @@ const ItemDetail = ({ listProduct }) => {
                 <h3 className="price">${listProduct.price}</h3>
                 <div>
                     {
-                        qty ?
+                        quantity ?
                             <Link to='/cart' >
                                 <Button className="goToCart" colorScheme='teal' size='sm'>
                                     GO TO CART
                                 </Button>
                             </Link>
                             :
-                            <ItemCount qty={qty} setQty={setQty} initial={1} stock={1} onAdd={onAdd} />
+                            <ItemCount quantity={quantity} setQuantity={setQuantity} initial={1} stock={listProduct.stock} onAdd={onAdd} />
                     }
                 </div>
             </div>

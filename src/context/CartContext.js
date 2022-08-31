@@ -12,18 +12,18 @@ const MyProvider = ({ children }) => {
         return cart.some(x => x.id === id)
     }
 
-    const addItem = (item, qty) => {
+    const addItem = (item, quantity) => {
 
         const newItem = {
             ...item,
-            qty
+            quantity
         }
 
         if (isInCart(newItem.id)) {
             const findProduct = cart.find(x => x.id === newItem.id)
             const productIndex = cart.indexOf(findProduct)
             const auxArray = [...cart]
-            auxArray[productIndex].qty += qty
+            auxArray[productIndex].quantity += quantity
             setCart(auxArray)
         } else {
             setCart([...cart, newItem])
@@ -39,11 +39,11 @@ const MyProvider = ({ children }) => {
     }
 
     const getItemQty = () => {
-        return cart.reduce((acc, x) => acc += x.qty, 0)
+        return cart.reduce((acc, x) => acc += x.quantity, 0)
     }
 
     const getItemPrice = () => {
-        return cart.reduce((acc, x) => acc += x.qty * x.price, 0)
+        return cart.reduce((acc, x) => acc += x.quantity * x.price, 0)
     }
 
 

@@ -7,10 +7,16 @@ function CartWidget() {
     const { getItemQty } = useContext(CartContext)
 
     return (
-        <div>
-                <FaShoppingCart itemContent={getItemQty()} />
-        </div >
+        <div className='cartWidget'>
+            <Link to="/cart">
+                <span>
+                    < FaShoppingCart />
+                </span>
+                {getItemQty}
+            </Link>
+        </div>
     )
 }
 
 export default CartWidget
+

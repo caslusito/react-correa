@@ -1,46 +1,76 @@
 import { useState, useEffect } from "react"
-import { customFetch } from "../assets/customFetch"
-import { products } from "../assets/products"
 import { useParams } from 'react-router-dom'
-import { Spinner , Center } from "@chakra-ui/react"
+import { Spinner, Center } from "@chakra-ui/react"
+import { db } from "../firebase"
+import { collection, getDocs, query, where } from "firebase/firestore"
 import ItemList from "./ItemList"
+
 
 
 const ItemListContainer = ({ greeting }) => {
 
     const [listProduct, setListProduct] = useState([])
     const [loading, setLoading] = useState(true)
-
-    const { category } = useParams()
+    const { id } = useParams()
 
 
     useEffect(() => {
-        setLoading(true)
-        customFetch(products)
-            .then(res => {
-                if (category) {
-                    setLoading(false)
-                    setListProduct(res.filter(prod => prod.category === category))
-                } else {
-                    setLoading(false)
-                    setListProduct(res)
-                }
-            })
-    }, [category])
+        if (!id) {
+            const productsCollection = collection(db, "products")
+            const consulta = getDocs(productsCollection)
 
+            consulta
+                .then(snapshot => {
+                    const listProduct = snapshot.docs.map(doc => {
+                        return {
+                            ...doc.data(),
+                            id: doc.id
+                        }
+                    })
+                    setListProduct(listProduct)
+                    setLoading(false)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        } else {
+            const productsCollection = collection(db, "products")
+            const filter = query(productsCollection,
+                where("category", "==", id),
+                where("stock", ">", 10))
+            const consulta = getDocs(filter)
 
-    return (
-        <>
-            <h1 className="titulo">Welcome {greeting}</h1>
-            {!loading
-                ?
+            consulta
+                .then(snapshot => {
+                    const listProduct = snapshot.docs.map(doc => {
+                        return {
+                            ...doc.data(),
+                            id: doc.id
+                        }
+                    })
+                    setListProduct(listProduct)
+                    setLoading(false)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+    }, [id])
+
+    if (loading) {
+        return (
+            <Center mt={10}>
+                <Spinner />
+            </Center>
+            
+        )
+    } else {
+        return (
+            <>
+                <h1 className="titulo">Welcome {greeting}</h1>
                 <ItemList listProduct={listProduct} />
-                :
-                <Center mt="40px">
-                <Spinner/>
-                </Center>
-            }
-        </>
-    )
+            </>
+        )
+    }
 }
 export default ItemListContainer

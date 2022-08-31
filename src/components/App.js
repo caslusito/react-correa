@@ -5,6 +5,7 @@ import Cart from "./cart"
 import Nav from "./navBar"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import MyProvider from "../context/CartContext";
+import "../firebase.js"
 
 
 const App = () => {

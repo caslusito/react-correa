@@ -6,7 +6,7 @@ const Item = ({ product }) => {
         <>
             <div className="camisetas">
                 <h2>{product.name}</h2>
-                <img src={product.image} alt={product.product} />
+                <img className="camisetasImg" src={product.image} alt={product.product} />
                 <h3>${product.price}</h3>
                 <NavLink className="button" to={`/details/${product.id}`}>see details</NavLink>
                 <h4>Available stock : {product.stock}</h4>

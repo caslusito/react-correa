@@ -5,7 +5,6 @@ export const products = [
         name: "Juventus 22/23",
         category: "international",
         image: "../../juventus.webp",
-        description: "",
         price: 12.799
     },
     {
@@ -14,8 +13,7 @@ export const products = [
         name: "Argentina 21/22",
         image: "../../argentina.webp",
         category: "national",
-        description: "",
-        price: 13.459
+        price: 17.459
     },
     {
         id: 3,
@@ -23,7 +21,6 @@ export const products = [
         name: "Barcelona 94/95",
         image: "../../barcelona retro.webp",
         category: "retro",
-        description: "",
         price: 37.999
     },
     {
@@ -32,7 +29,6 @@ export const products = [
         name: "Real madrid 22/23",
         image: "../../real madrid.webp",
         category: "international",
-        description: "",
         price: 18.999
     },
     {
@@ -41,25 +37,22 @@ export const products = [
         name: "Nigeria 21/22",
         image: "../../nigeria.webp",
         category: "international",
-        description: "",
         price: 12.999
     },
     {
         id: 6,
         stock: 54,
-        name: "palmeiras 21/22",
+        name: "Palmeiras 21/22",
         image: "../../palmeiras.webp",
         category: "international",
-        description: "",
         price: 14.999
     },
     {
         id: 7,
         stock: 2,
-        name: "liverpool retro 92/93",
+        name: "Liverpool retro 92/93",
         image: "../../liverpool retro.webp",
         category: "retro",
-        description: "",
         price: 47.999
     }
 ]
