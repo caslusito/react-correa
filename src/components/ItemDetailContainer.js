@@ -8,7 +8,6 @@ import ItemDetail from "./ItemDetail"
 const ItemDetailContainer = () => {
 
     const [listProduct, setListProduct] = useState([]);
-
     const { id } = useParams()
 
     useEffect(() => {
@@ -22,7 +21,7 @@ const ItemDetailContainer = () => {
                 setListProduct(res.data())
             })
             .catch((err) => {
-                console.log(err)
+                console.log (err)
             })
 
     }, [id])

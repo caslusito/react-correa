@@ -1,10 +1,12 @@
 import { ChakraProvider } from "@chakra-ui/react";
+import { ToastContainer } from "react-toastify";
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import ItemListContainer from "./ItemListContainer"
 import ItemDetailContainer from "./ItemDetailContainer"
 import Cart from "./cart"
 import Nav from "./navBar"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
 import MyProvider from "../context/CartContext";
+import 'react-toastify/dist/ReactToastify.css';
 import "../firebase.js"
 
 
@@ -21,6 +23,7 @@ const App = () => {
                         <Route exact path="/cart" element={<Cart />} />
                     </Routes>
                 </BrowserRouter>
+                <ToastContainer/>
             </ChakraProvider>
         </MyProvider>
     )

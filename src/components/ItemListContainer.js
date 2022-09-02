@@ -1,9 +1,11 @@
+import ItemList from "./ItemList"
 import { useState, useEffect } from "react"
 import { useParams } from 'react-router-dom'
 import { Spinner, Center } from "@chakra-ui/react"
 import { db } from "../firebase"
+import { toast } from "react-toastify"
 import { collection, getDocs, query, where } from "firebase/firestore"
-import ItemList from "./ItemList"
+
 
 
 
@@ -52,7 +54,7 @@ const ItemListContainer = ({ greeting }) => {
                     setLoading(false)
                 })
                 .catch(err => {
-                    console.log(err)
+                    toast.error("error al cargar las camisetas")
                 })
         }
     }, [id])
@@ -62,7 +64,7 @@ const ItemListContainer = ({ greeting }) => {
             <Center mt={10}>
                 <Spinner />
             </Center>
-            
+
         )
     } else {
         return (

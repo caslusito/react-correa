@@ -1,12 +1,14 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from "react-router-dom"
 import { CartContext } from '../context/CartContext'
-import { Button, Center } from '@chakra-ui/react'
+import { Button, Center, Text } from '@chakra-ui/react'
+import { toast } from "react-toastify";
+
 
 
 function Cart() {
 
-    const { cart, deleteItem } = useContext(CartContext)
+    const { cart, deleteItem, emptyCart } = useContext(CartContext)
 
     if (cart.length > 0) {
         return (
@@ -19,9 +21,9 @@ function Cart() {
                                     <img src={element.image} alt={element.name} ></img>
                                 </div>
                                 <div className='carritoDetails'>
-                                    <h3>{element.name}</h3>
-                                    <h2>price : ${element.price}</h2>
-                                    <h3>quantity : {element.quantity}</h3>
+                                    <Text m={[5]}>{element.name}</Text>
+                                    <Text m={[5]}>${element.price}</Text>
+                                    <Text m={[5]}>{element.stock}</Text>
                                 </div>
                                 <div className='deleteItem'>
                                     <Button colorScheme='red' onClick={() => deleteItem(element.id)}>Delete</Button>
@@ -30,24 +32,24 @@ function Cart() {
                         })
                     }
                 </div>
-                {/* <div>
-                    <Button colorScheme='blue' onClick={() => emptyCart()}>Empty cart</Button>
-                </div>
-                <div>
-                    <Link to={'/checkout'}><Button colorScheme='blue'>Go to Checkout</Button></Link>
-                </div> */}
+                <Button m={[2]} colorScheme='blue' onClick={() => emptyCart()}>Empty cart</Button>
+                <Button m={[2]} colorScheme='orange' onClick={(res) =>
+                    toast.success(`Orden Nº1 creada con exito!`)}>
+                    Purchase
+                </Button>
             </div>
         )
     }
 
+
     return (
         <div>
             <h1 className='margin tituloPrincipal'>No items in the cart</h1>
-            <Link to={'/'}>
+            <NavLink to={'/'}>
                 <Center mt="40px">
                     <Button colorScheme='orange'>Go to Home</Button>
                 </Center>
-            </Link>
+            </NavLink>
         </div>
     )
 }
