@@ -1,14 +1,14 @@
 import React, { useContext } from 'react'
 import { NavLink } from "react-router-dom"
-import { CartContext } from '../context/CartContext'
+import { contexto } from '../context/CartContext'
 import { Button, Center, Text } from '@chakra-ui/react'
 import { toast } from "react-toastify";
 
 
 
-function Cart() {
+const Cart = () => {
 
-    const { cart, deleteItem, emptyCart } = useContext(CartContext)
+    const { cart, cleanCart, total, eliminateFromCart } = useContext(contexto)
 
     if (cart.length > 0) {
         return (
@@ -23,20 +23,21 @@ function Cart() {
                                 <div className='carritoDetails'>
                                     <Text m={[5]}>{element.name}</Text>
                                     <Text m={[5]}>${element.price}</Text>
-                                    <Text m={[5]}>{element.stock}</Text>
+                                    <Text m={[5]}>{element.quantity}</Text>
                                 </div>
                                 <div className='deleteItem'>
-                                    <Button colorScheme='red' onClick={() => deleteItem(element.id)}>Delete</Button>
+                                    <Button colorScheme='red' onClick={() => eliminateFromCart(element.id)}>Delete</Button>
                                 </div>
                             </div>
                         })
                     }
                 </div>
-                <Button m={[2]} colorScheme='blue' onClick={() => emptyCart()}>Empty cart</Button>
+                <Button m={[2]} colorScheme='blue' onClick={cleanCart}>Empty cart</Button>
                 <Button m={[2]} colorScheme='orange' onClick={(res) =>
                     toast.success(`Orden Nº1 creada con exito!`)}>
                     Purchase
                 </Button>
+                <h2>total:${total}</h2>
             </div>
         )
     }

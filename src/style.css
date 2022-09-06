@@ -54,10 +54,11 @@
     text-align: center;
     margin-top: 5rem;
     margin-left: 2.6rem;
+    margin-bottom: 2rem;
+    margin-right: 1.2rem;
     border-radius: 6px;
     box-shadow: 0 0 0 0.2em rgba(0, 0, 0, 0.2);
     float: left;
-    margin-bottom: 2rem;
 }
 
 
@@ -87,7 +88,6 @@
     margin-right: 25%;
     margin-left: 25%;
     margin-top: 1%;
-    background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
 
 .img-details {
@@ -178,4 +178,17 @@
 
 .camisetasImg {
     width: 250px;
+}
+
+
+.cartWidget {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.cartWidget>a {
+    text-decoration: none;
+    color: white;
 }

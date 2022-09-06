@@ -1,18 +1,21 @@
-import { Context } from "../context/CartContext";
+import { contexto } from "../context/CartContext";
 import { FaShoppingCart } from "react-icons/fa";
-import { NavLink } from 'react-router-dom';
-import { Text } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 
 function CartWidget() {
 
-        const { totalQuantity } = Context()
+        const { quantity } = UseContext(contexto)
 
         return (
-                <NavLink to="/cart">
-                        < FaShoppingCart />
-                        <Text className='badge' fontSize='xs'>{totalQuantity()}</Text>
-                </NavLink>
+                <div className='cartWidget'>
+                        <Link to="/cart">
+                                < FaShoppingCart />
+                                {quantity}
+                        </Link>
+                </div>
         )
+
+
 }
 
 export default CartWidget

@@ -4,8 +4,8 @@ import { useState } from 'react';
 const ItemCount = ({ stock, initial, onAdd }) => {
     const [count, setCount] = useState(initial);
 
-    const increase = () => count < stock && setCount (count + 1)
-    const decrease = () => count > initial && setCount (count - 1)
+    const increase = () => count < stock && setCount(count + 1)
+    const decrease = () => count > initial && setCount(count - 1)
     return (
         <div className="itemCount">
             <h3 className="count"> {count} </h3>
@@ -13,7 +13,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
                 <Button className="countCart" colorScheme='blue' onClick={increase}>+</Button>
                 <Button className="countCart" colorScheme='blue' onClick={decrease}>-</Button>
             </div>
-            <Button className="addToCart" colorScheme='orange' onClick={() => onAdd (count)}>ADD TO CART</Button>
+            <Button className="addToCart" colorScheme='orange' onClick={() => onAdd(count)}>ADD TO CART</Button>
         </div>
     )
 

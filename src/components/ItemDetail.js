@@ -2,24 +2,23 @@ import ItemCount from "./ItemCount"
 import { useState, useContext } from "react"
 import { Link } from "react-router-dom"
 import { Button } from '@chakra-ui/react'
-import { CartContext } from "../context/CartContext";
+import { contexto } from "../context/CartContext";
 
-const ItemDetail = ({ listProduct }) => {
+const ItemDetail = ({ item }) => {
 
     const [quantity, setQuantity] = useState(false)
-    const { addItem, isInCart } = useContext(CartContext)
-    const onAdd = () => {
-        addItem(listProduct, quantity)
-        isInCart(listProduct.id)
+    const {addToCart} = useContext(contexto)
+    const onAdd = (contador)=>{
+        item&&addToCart(item,contador)
     }
 
     return (
         <>
             <div className="cont">
-                <h1 className="tituloPrincipal">{listProduct.name}</h1>
-                <img className="img-details" src={listProduct.image} alt={listProduct.name} />
-                <h2 className="description">{listProduct.description} </h2>
-                <h3 className="price">${listProduct.price}</h3>
+                <h1 className="tituloPrincipal">{item.name}</h1>
+                <img className="img-details" src={item.image} alt={item.name} />
+                <h2 className="description">{item.description} </h2>
+                <h3 className="price">${item.price}</h3>
                 <div>
                     {
                         quantity ?
@@ -29,7 +28,7 @@ const ItemDetail = ({ listProduct }) => {
                                 </Button>
                             </Link>
                             :
-                            <ItemCount quantity={quantity} setQuantity={setQuantity} initial={1} stock={listProduct.stock} onAdd={onAdd} />
+                            <ItemCount quantity={quantity} setQuantity={setQuantity} initial={1} stock={item.stock} onAdd={onAdd} />
                     }
                 </div>
             </div>

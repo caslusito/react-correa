@@ -1,54 +1,61 @@
-import { createContext, useState } from "react";
+import { createContext , useState, useEffect } from 'react';
 
-export const CartContext = createContext()
+export const contexto = createContext();
+const { Provider } = contexto;
 
-const { Provider } = CartContext
-
-const MyProvider = ({ children }) => {
-
+function CartProvider({ children }) {
     const [cart, setCart] = useState([])
+    const [quantity, setQuantity] = useState(0)
+    const [total, setTotal] = useState()
 
-    const isInCart = (id) => {
-        return cart.some(x => x.id === id)
+    useEffect(() => {
+        var t = 0
+        const totals = cart.map(p => p.price * p.amount)
+        totals.map(p => t = t + p)
+        setTotal(t)
+        const cartQuantity = cart.length
+        setQuantity(cartQuantity)
+    }, [cart])
+
+
+    function isInCart(id) {
+        const item = cart.find(p => p.id === id)
+        return item
     }
 
-    const addItem = (item, quantity) => {
-
-        const newItem = {
-            ...item,
-            quantity
-        }
-
-        if (isInCart(newItem.id)) {
-            const findProduct = cart.find(x => x.id === newItem.id)
-            const productIndex = cart.indexOf(findProduct)
-            const auxArray = [...cart]
-            auxArray[productIndex].quantity += quantity
-            setCart(auxArray)
+    function addToCart(product, contador) {
+        if (isInCart(product.id)) {
+            const oldProduct = cart.find(p => p.id === product.id)
+            const cartWithoutOld = cart.filter(item => item.id !== product.id)
+            const newProduct = { ...oldProduct }
+            newProduct.amount += contador
+            cartWithoutOld.push(newProduct)
+            setCart(cartWithoutOld)
         } else {
-            setCart([...cart, newItem])
+            const newItem = { id: product.id, name: product.name, image: product.image, price: product.price, amount: contador }
+            const newCart = [...cart]
+            newCart.push(newItem)
+            setCart(newCart)
         }
     }
 
-    const emptyCart = () => {
-        return setCart([])
+
+
+
+    function eliminateFromCart(id) {
+        const newCart = cart.filter(product => product.id !== id)
+        setCart(newCart)
     }
 
-    const deleteItem = (id) => {
-        return setCart(cart.filter(x => x.id !== id))
+    function clearCart() {
+        setCart([])
     }
 
-    const getItemQty = () => {
-        return cart.reduce((acc, x) => acc += x.quantity, 0)
-    }
+    return (
 
-    const getItemPrice = () => {
-        return cart.reduce((acc, x) => acc += x.quantity * x.price, 0)
-    }
-
-
-    return <Provider value={{ cart, isInCart, addItem, emptyCart, deleteItem, getItemQty, getItemPrice }}>{children}</Provider>
-
+        <Provider value={{ cart, quantity, total, addToCart, eliminateFromCart, clearCart, isInCart }}>
+            {children}
+        </Provider>
+    )
 }
-
-export default MyProvider
+export default CartProvider

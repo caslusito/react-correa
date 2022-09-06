@@ -3,7 +3,6 @@ import { useState, useEffect } from "react"
 import { useParams } from 'react-router-dom'
 import { Spinner, Center } from "@chakra-ui/react"
 import { db } from "../firebase"
-import { toast } from "react-toastify"
 import { collection, getDocs, query, where } from "firebase/firestore"
 
 
@@ -11,53 +10,56 @@ import { collection, getDocs, query, where } from "firebase/firestore"
 
 const ItemListContainer = ({ greeting }) => {
 
-    const [listProduct, setListProduct] = useState([])
+    const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
     const { id } = useParams()
 
-
     useEffect(() => {
         if (!id) {
-            const productsCollection = collection(db, "products")
-            const consulta = getDocs(productsCollection)
+            const productsCollection  = collection(db, "products")
+            const consulta = getDocs(productsCollection )
 
             consulta
                 .then(snapshot => {
-                    const listProduct = snapshot.docs.map(doc => {
+                    const products = snapshot.docs.map(doc => {
                         return {
                             ...doc.data(),
                             id: doc.id
                         }
                     })
-                    setListProduct(listProduct)
+                    setProducts(products)
                     setLoading(false)
                 })
                 .catch(err => {
                     console.log(err)
                 })
         } else {
-            const productsCollection = collection(db, "products")
-            const filter = query(productsCollection,
+            const productsCollection  = collection(db, "products")
+            const filtro = query(productsCollection ,
                 where("category", "==", id),
-                where("stock", ">", 10))
-            const consulta = getDocs(filter)
+                where("stock", ">", 100))
+            const consulta = getDocs(filtro)
 
             consulta
                 .then(snapshot => {
-                    const listProduct = snapshot.docs.map(doc => {
+                    const products = snapshot.docs.map(doc => {
                         return {
                             ...doc.data(),
                             id: doc.id
                         }
                     })
-                    setListProduct(listProduct)
+                    setProducts(products)
                     setLoading(false)
                 })
                 .catch(err => {
-                    toast.error("error al cargar las camisetas")
+                    console.log(err)
                 })
         }
     }, [id])
+
+
+
+
 
     if (loading) {
         return (
@@ -70,7 +72,7 @@ const ItemListContainer = ({ greeting }) => {
         return (
             <>
                 <h1 className="titulo">Welcome {greeting}</h1>
-                <ItemList listProduct={listProduct} />
+                <ItemList products={products} />
             </>
         )
     }

@@ -7,7 +7,7 @@ import ItemDetail from "./ItemDetail"
 
 const ItemDetailContainer = () => {
 
-    const [listProduct, setListProduct] = useState([]);
+    const [item, setItem] = useState([]);
     const { id } = useParams()
 
     useEffect(() => {
@@ -18,10 +18,10 @@ const ItemDetailContainer = () => {
 
         consulta
             .then((res) => {
-                setListProduct(res.data())
+                setItem(res.data())
             })
             .catch((err) => {
-                console.log (err)
+                console.log(err)
             })
 
     }, [id])
@@ -29,7 +29,7 @@ const ItemDetailContainer = () => {
     return (
         <>
             <div>
-                <ItemDetail listProduct={listProduct} />
+                <ItemDetail item={item} />
             </div>
         </>
     );
