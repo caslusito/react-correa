@@ -5,14 +5,14 @@ import ItemListContainer from "./ItemListContainer"
 import ItemDetailContainer from "./ItemDetailContainer"
 import Cart from "./cart"
 import Nav from "./navBar"
-import CartContext from "../context/CartContext";
+import Context from "../context/CartContext";
 import 'react-toastify/dist/ReactToastify.css';
 import "../firebase.js"
 
 
 const App = () => {
     return (
-        <CartContext>
+        <Context>
             <ChakraProvider>
                 <BrowserRouter>
                     <Nav />
@@ -25,7 +25,7 @@ const App = () => {
                 </BrowserRouter>
                 <ToastContainer />
             </ChakraProvider>
-            </CartContext>
+        </Context>
     )
 }
 

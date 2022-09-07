@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import CartWidget from './CartWidget'
 
 
 const navBar = () => {
@@ -13,11 +14,7 @@ const navBar = () => {
                     <li><NavLink to="/category/retro">RETRO</NavLink></li>
                     <li><NavLink to="/category/national">NATIONAL</NavLink></li>
                     <li>
-                        <NavLink to="cart">
-                            <span class="material-symbols-outlined">
-                                shopping_cart
-                            </span>
-                        </NavLink>
+                            <CartWidget/>
                     </li>
                 </ul>
             </nav>
