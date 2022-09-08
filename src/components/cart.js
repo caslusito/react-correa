@@ -1,13 +1,14 @@
 import { NavLink } from "react-router-dom"
 import { Context } from '../context/CartContext'
 import { Button, Center, Text } from '@chakra-ui/react'
+import { Link } from "react-router-dom"
+
 
 
 
 const Cart = () => {
 
     const { cartList, removeProduct, cleanCart, totalPrice } = Context()
-    console.log(cartList)
 
     if (cartList.length > 0) {
         return (
@@ -32,7 +33,10 @@ const Cart = () => {
                     }
                 </div>
                 <Center mt="40px">
-                    <Button colorScheme='blue' onClick={cleanCart}>Empty cart</Button>
+                    <Button m={[3]} colorScheme='blue' onClick={cleanCart}>Empty cart</Button>
+                    <Link m={[3]} to={'/checkout'}>
+                        <Button colorScheme='orange'>Go to checkout</Button>
+                    </Link>
                 </Center>
                 <Center mt="40px">
                     <Text as="b">TOTAL: ${totalPrice()}</Text>
