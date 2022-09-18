@@ -4,13 +4,15 @@ import { db } from '../firebase'
 import { collection, addDoc, serverTimestamp } from "firebase/firestore"
 import { Button, Center, Text, Input } from "@chakra-ui/react"
 import { useNavigate } from 'react-router-dom'
+import swal from 'sweetalert2';
+
 
 
 
 
 const Checkout = () => {
 
-    const { cartList, totalPrice } = Context()
+    const { cartList, cleanCart, totalPrice } = Context()
     const timeOut = useNavigate()
     const [costumer, setCostumer] = useState({
 
@@ -28,13 +30,13 @@ const Checkout = () => {
 
     }
 
+    const navigate = useNavigate()
+
+
     if (cartList.length === 0) {
         setTimeout(() => {
             timeOut('/')
         }, 3000)
-        return (<Center mt={20}>
-            <Text fontSize={25}>no products... redirecting to home</Text>
-        </Center>)
     }
 
 
@@ -50,14 +52,35 @@ const Checkout = () => {
 
         const productsCollection = collection(db, "orders")
         const consulta = addDoc(productsCollection, order)
+
         consulta
             .then((res) => {
-                alert(`order ${res.id} created successfully! TOTAL PRICE: $ ${totalPrice()}`)
+                swal.fire({
+                    icon: "success",
+                    title: "Thanks for your purchase!",
+                    html: `Your purchase id is <b>${res.id}</b>`,
+                    confirmButtonText: "accept"
+                }).then((res) => {
+                    if (res.isConfirmed)
+                        swal.fire({
+                            icon: "info",
+                            text: "you will return in 5 seconds to the main page..."
+                        })
+                    setTimeout(() => {
+                        navigate("/")
+                    }, 5000)
+                })
+                cleanCart()
             })
             .catch(error => {
-                console.log(error)
+                swal.fire({
+                    icon: "error",
+                    title: "An error has occurred"
+                })
             })
     }
+
+
 
 
     return (

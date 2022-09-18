@@ -15,9 +15,9 @@ const ItemListContainer = ({ greeting }) => {
     const { id } = useParams()
 
     useEffect(() => {
+        const productsCollection = collection(db, "products")
         if (!id) {
-            const productsCollection  = collection(db, "products")
-            const consulta = getDocs(productsCollection )
+            const consulta = getDocs(productsCollection)
 
             consulta
                 .then(snapshot => {
@@ -34,8 +34,8 @@ const ItemListContainer = ({ greeting }) => {
                     console.log(err)
                 })
         } else {
-            const productsCollection  = collection(db, "products")
-            const filtro = query(productsCollection ,
+            const productsCollection = collection(db, "products")
+            const filtro = query(productsCollection,
                 where("category", "==", id),
                 where("stock", ">", 100))
             const consulta = getDocs(filtro)

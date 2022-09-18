@@ -22,7 +22,7 @@ const App = () => {
                         <Route exact path="/details/:id" element={<ItemDetailContainer />} />
                         <Route exact path="/category/:category" element={<ItemListContainer />} />
                         <Route exact path="/cart" element={<Cart />} />
-                        <Route exact path="/Checkout" element={<Checkout/>}/>
+                        <Route exact path="/Checkout" element={<Checkout />} />
                     </Routes>
                 </BrowserRouter>
                 <ToastContainer />
