@@ -12,13 +12,22 @@ const ItemListContainer = ({ greeting }) => {
 
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
-    const { id } = useParams()
+    const { category } = useParams()
 
     useEffect(() => {
         const productsCollection = collection(db, "products")
-        if (!id) {
             const consulta = getDocs(productsCollection)
 
+
+
+
+
+
+
+
+
+
+
             consulta
                 .then(snapshot => {
                     const products = snapshot.docs.map(doc => {
@@ -30,37 +39,28 @@ const ItemListContainer = ({ greeting }) => {
                     setProducts(products)
                     setLoading(false)
                 })
-                .catch(err => {
-                    console.log(err)
-                })
-        } else {
-            const productsCollection = collection(db, "products")
-            const filtro = query(productsCollection,
-                where("category", "==", id),
-                where("stock", ">", 100))
-            const consulta = getDocs(filtro)
 
-            consulta
-                .then(snapshot => {
-                    const products = snapshot.docs.map(doc => {
-                        return {
-                            ...doc.data(),
-                            id: doc.id
-                        }
-                    })
-                    setProducts(products)
-                    setLoading(false)
-                })
-                .catch(err => {
-                    console.log(err)
-                })
-        }
-    }, [id])
+
+                if (category === "international") {
+                    const q = query(collection(db, "products"), where("category", "==", "international"));
+                    getDocs(q).then((snapshot) => { setProducts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))) })
+                } if (category === "selection") {
+                    const q = query(collection(db, "products"), where("category", "==", "selection"));
+                    getDocs(q).then((snapshot) => { setProducts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))) })
+                }
+                if (category === "retro") {
+                    const q = query(collection(db, "products"), where("category", "==", "retro"));
+                    getDocs(q).then((snapshot) => { setProducts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))) })
+                }
+                
+            }, [category])
 
 
 
 
 
+
+    
     if (loading) {
         return (
             <Center mt={10}>

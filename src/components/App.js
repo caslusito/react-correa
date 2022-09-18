@@ -7,6 +7,7 @@ import Cart from "./cart"
 import Nav from "./navBar"
 import Checkout from "./Checkout"
 import Context from "../context/CartContext";
+import Footer from "./footer";
 import 'react-toastify/dist/ReactToastify.css';
 import "../firebase.js"
 
@@ -24,6 +25,7 @@ const App = () => {
                         <Route exact path="/cart" element={<Cart />} />
                         <Route exact path="/Checkout" element={<Checkout />} />
                     </Routes>
+                    <Footer/>
                 </BrowserRouter>
                 <ToastContainer />
             </ChakraProvider>

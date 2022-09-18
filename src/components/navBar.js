@@ -9,7 +9,7 @@ const navBar = () => {
                 <ul className="navMenu">
                     <li><NavLink to="/category/international ">INTERNATIONAL</NavLink></li>
                     <li><NavLink to="/category/retro">RETRO</NavLink></li>
-                    <li><NavLink to="/category/national">NATIONAL</NavLink></li>
+                    <li><NavLink to="/category/selection">SELECTION</NavLink></li>
                     <li>
                         <CartWidget />
                     </li>
