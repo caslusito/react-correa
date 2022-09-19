@@ -4,7 +4,7 @@ import CartWidget from './CartWidget'
 
 const navBar = () => {
     return (
-        <header id="header"><Link to={"/"}> <img className="logo" src="../../nizar.png" alt="logo nizar" /> </Link>
+        <header id="header"><Link to={"/"}> <img className="logo" src="../../animacion.gif" alt="logo nizar" /> </Link>
             <nav>
                 <ul className="navMenu">
                     <li><NavLink to="/category/international ">INTERNATIONAL</NavLink></li>
