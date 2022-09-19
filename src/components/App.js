@@ -1,5 +1,4 @@
 import { ChakraProvider } from "@chakra-ui/react";
-import { ToastContainer } from "react-toastify";
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import ItemListContainer from "./ItemListContainer"
 import ItemDetailContainer from "./ItemDetailContainer"
@@ -8,7 +7,6 @@ import Nav from "./navBar"
 import Checkout from "./Checkout"
 import Context from "../context/CartContext";
 import Footer from "./footer";
-import 'react-toastify/dist/ReactToastify.css';
 import "../firebase.js"
 
 
@@ -25,9 +23,8 @@ const App = () => {
                         <Route exact path="/cart" element={<Cart />} />
                         <Route exact path="/Checkout" element={<Checkout />} />
                     </Routes>
-                    <Footer/>
+                    <Footer />
                 </BrowserRouter>
-                <ToastContainer />
             </ChakraProvider>
         </Context>
     )

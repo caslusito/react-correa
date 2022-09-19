@@ -6,9 +6,9 @@ import ItemDetail from "./ItemDetail"
 
 
 const ItemDetailContainer = () => {
-
     const [item, setItem] = useState([]);
     const { id } = useParams()
+
 
     useEffect(() => {
 
@@ -23,7 +23,6 @@ const ItemDetailContainer = () => {
             .catch((err) => {
                 console.log(err)
             })
-
     }, [id])
 
     return (

@@ -13,7 +13,7 @@
     background: black;
     width: 100%;
     height: 120px;
-    
+
 }
 
 
@@ -97,20 +97,6 @@
     margin-left: 17rem;
 }
 
-.itemCount {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-
-.itemCountCounter {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .count {
     font-size: 30px;
     font-weight: bold;
@@ -169,10 +155,6 @@
 }
 
 
-.margin {
-    margin-top: 3rem;
-}
-
 .deleteItem {
     margin-top: 6.1rem;
 }
@@ -181,12 +163,6 @@
     width: 250px;
 }
 
-
-.cartWidget {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 .form {
     display: flex;
@@ -210,7 +186,7 @@
 
 
 
-/* footer {
+footer {
     position: absolute;
     left: 0;
     right: 0;
@@ -220,7 +196,7 @@
     padding-top: 40px;
     color: #fff;
     margin-top: auto;
-    
+
 }
 
 .footer-div {
@@ -263,4 +239,4 @@
     opacity: .4;
     text-transform: uppercase;
     font-weight: 200;
-} */
+}
