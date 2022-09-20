@@ -48,7 +48,7 @@ const ItemListContainer = ({ greeting }) => {
     } else {
         return (
             <>
-                <h1 className="titulo">Welcome {greeting}</h1>
+                <h1 className="titulo">{greeting}</h1>
                 <ItemList products={products} />
             </>
         )

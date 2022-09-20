@@ -7,28 +7,30 @@ export function CartContextProvider({ children }) {
 
     const [cartList, setCartList] = useState([])
 
-    const isInCart = (id) => cartList.find(prod => prod.id === id)
+    const isInCart = (id) => cartList.find((prod) => prod.id === id);
+
 
     const addToCart = (item, quantity) => {
         if (isInCart(item.id)) {
-            const newCart = cartList.map(prod => {
+            const newCart = cartList.map((prod) => {
                 if (prod.id === item.id) {
-                    const newQuantity = prod.quantity + quantity
-                    return { ...prod, quantity: newQuantity }
+                    const newQuantity = prod.quantity + quantity;
+                    return { ...prod, quantity: newQuantity };
                 } else {
-                    return prod
+                    return prod;
                 }
-            })
-            setCartList(newCart)
+            });
+            setCartList(newCart);
         } else {
-            const newProduct = { ...item, quantity: quantity }
-            setCartList([...cartList, newProduct])
+            const newProduct = { ...item, quantity: quantity };
+            setCartList([...cartList, newProduct]);
         }
-    }
+    };
 
-    const removeProduct = (id) => setCartList(cartList.filter(prod => prod.id !== id))
+    const removeProduct = (id) =>
+        setCartList(cartList.filter((prod) => prod.id !== id));
 
-    const cleanCart = () => setCartList([])
+    const cleanCart = () => setCartList([]);
 
     const totalPrice = () => {
         return cartList.reduce((acc, product) => acc += (product.price * product.quantity), 0)
@@ -40,8 +42,18 @@ export function CartContextProvider({ children }) {
     }
 
     return (
-        <CartContext.Provider value={{ cartList, addToCart, cleanCart, removeProduct, totalQuantity, totalPrice }}>{children}</CartContext.Provider>
+        <CartContext.Provider
+            value={{
+                addToCart,
+                removeProduct,
+                cleanCart,
+                totalPrice,
+                totalQuantity,
+                cartList,
+            }}
+        >
+            {children}
+        </CartContext.Provider>
     );
 }
-
 export default CartContextProvider;

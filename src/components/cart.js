@@ -3,9 +3,6 @@ import { Context } from '../context/CartContext'
 import { Button, Center, Text } from '@chakra-ui/react'
 import { Link } from "react-router-dom"
 
-
-
-
 const Cart = () => {
 
     const { cartList, removeProduct, cleanCart, totalPrice } = Context()

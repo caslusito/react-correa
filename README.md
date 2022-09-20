@@ -24,9 +24,15 @@ Link del proyecto : https://nizarcamisetas.vercel.app/
 
 4. Ir a la consola e introducir "npm install".
 
-5. Una vez realizado los pasos anteriores, introducirás "npm start" y la aplicación estará lista.
+    ```
+    $ npm install
+    ```
 
+5. Una vez realizado los pasos anteriores, introducirás "npm run start" y la aplicación estará lista.
 
+    ```
+    $ npm run start
+    ```
 
 ### Tecnologias implementadas
 
