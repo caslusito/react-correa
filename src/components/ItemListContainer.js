@@ -3,41 +3,40 @@ import { useState, useEffect } from "react"
 import { useParams } from 'react-router-dom'
 import { Spinner, Center } from "@chakra-ui/react"
 import { db } from "../firebase"
-import { collection, getDocs, query, where } from "firebase/firestore"
+import { collection, getDocs} from "firebase/firestore"
+
+const prodCollection = collection(db, "products");
 
 const ItemListContainer = ({ greeting }) => {
-    const [products, setProducts] = useState([])
-    const [loading, setLoading] = useState(true)
-    const { category } = useParams()
+    const [listProducts, setListProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    const { category } = useParams();
 
     useEffect(() => {
-        const productsCollection = collection(db, "products")
-        const consulta = getDocs(productsCollection)
+        const consulta = getDocs(prodCollection);
+        setLoading(true);
 
         consulta
-            .then(snapshot => {
-                const products = snapshot.docs.map(doc => {
+            .then((snapshot) => {
+                const producto = snapshot.docs.map((doc) => {
                     return {
                         ...doc.data(),
-                        id: doc.id
-                    }
-                })
-                setProducts(products)
-                setLoading(false)
+                        id: doc.id,
+                    };
+                });
+                if (category) {
+                    setLoading(false);
+                    setListProducts(producto.filter((prod) => prod.category === category));
+                } else {
+                    setLoading(false);
+                    setListProducts(producto);
+                }
             })
-        if (category === "international") {
-            const q = query(collection(db, "products"), where("category", "==", "international"));
-            getDocs(q).then((snapshot) => { setProducts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))) })
-        } if (category === "selection") {
-            const q = query(collection(db, "products"), where("category", "==", "selection"));
-            getDocs(q).then((snapshot) => { setProducts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))) })
-        }
-        if (category === "retro") {
-            const q = query(collection(db, "products"), where("category", "==", "retro"));
-            getDocs(q).then((snapshot) => { setProducts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))) })
-        }
-    }, [category])
-
+            .catch((err) => {
+                console.log(err);
+            });
+    }, [category]);
 
     if (loading) {
         return (
@@ -49,7 +48,7 @@ const ItemListContainer = ({ greeting }) => {
         return (
             <>
                 <h1 className="titulo">{greeting}</h1>
-                <ItemList products={products} />
+                <ItemList listProducts={listProducts} />
             </>
         )
     }

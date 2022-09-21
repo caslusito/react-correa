@@ -27,6 +27,7 @@ export function CartContextProvider({ children }) {
         }
     };
 
+
     const removeProduct = (id) =>
         setCartList(cartList.filter((prod) => prod.id !== id));
 

@@ -8,8 +8,8 @@ import swal from 'sweetalert2'
 
 const ItemDetail = ({ item }) => {
 
-    const [added, setAdded] = useState(false)
     const { addToCart } = Context()
+    const [added, setAdded] = useState(false)
 
     const onAdd = (quantity) => {
         swal.fire({
