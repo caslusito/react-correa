@@ -20,7 +20,7 @@ const Cart = () => {
                                 <div className='carritoDetails'>
                                     <Text m={[5]}>{element.name}</Text>
                                     <Text m={[5]}>${element.price}</Text>
-                                    <Text m={[5]}>{element.quantity}</Text>
+                                    <Text m={[5]}>x{element.quantity}</Text>
                                 </div>
                                 <div className='deleteItem'>
                                     <Button colorScheme='red' onClick={() => removeProduct(element.id)}>X</Button>

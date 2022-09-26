@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom"
+import { Text } from '@chakra-ui/react'
 
 const Item = ({ product }) => {
 
@@ -6,11 +7,11 @@ const Item = ({ product }) => {
         <>
             <div>
                 <div className="camisetas">
-                    <h2>{product.name}</h2>
+                    <Text as="b">{product.name}</Text>
                     <img className="camisetasImg" src={product.image} alt={product.product} />
-                    <h3>${product.price}</h3>
+                    <Text as="b">${product.price}</Text>
                     <NavLink className="button" to={`/details/${product.id}`}>see details</NavLink>
-                    <h4>Available stock : {product.stock}</h4>
+                    <Text as="b">Available stock : {product.stock}</Text>
                 </div>
             </div>
         </>
